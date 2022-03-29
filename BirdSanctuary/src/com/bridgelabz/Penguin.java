@@ -9,11 +9,10 @@ public class Penguin extends Bird implements Swimmable {
 
 	@Override
 	public void swimmable() {
-		System.out.println("Penguin can  swim");				
+		System.out.println("Penguin can't swim");				
 	}
-//	@Override
-//	void fly() {
-//		System.out.println(getClass().getSimpleName() + " Cannot fly");
-//	}
+	//	@Override
+	//	void fly() {
+	//		System.out.println(getClass().getSimpleName() + " Cannot fly");
+	//	}
 }
-

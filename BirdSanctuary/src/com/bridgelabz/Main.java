@@ -3,8 +3,8 @@ package com.bridgelabz;
 import java.util.Scanner;
 
 public class Main {
-	//	BirdRepository birdRepository = BirdRepository.getInstance();
-	//	UserInterface userInterface = UserInterface.getInstance();
+//		BirdRepository birdRepository = BirdRepository.getInstance();
+//		UserInterface userInterface = UserInterface.getInstance();
 	//	UserInterface userInterface = new UserInterface();
 	Scanner scanner = new Scanner(System.in);
 	final static int MAIN_EXIT = 8;
