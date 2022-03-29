@@ -1,7 +1,6 @@
 package com.bridgelabz;
 
 import java.util.HashSet;
-import java.util.Scanner;
 //import java.util.ArrayList;
 //import java.util.List;
 import java.util.Set;
@@ -9,7 +8,9 @@ import java.util.Set;
 public class BirdRepository {
 	//	private List birdList = new ArrayList<>();
 	private static BirdRepository instance;
-	private Set<Bird> birdList = new HashSet<>();
+	static String idOfBirdWhichNeedToBeEdited;
+
+	public Set<Bird> birdList = new HashSet<>();
 
 	private BirdRepository() {
 
@@ -48,7 +49,7 @@ public class BirdRepository {
 	}
 }
 
-	
+
 
 
 

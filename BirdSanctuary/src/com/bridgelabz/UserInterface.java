@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class UserInterface {
 	private static UserInterface instance;
-	Scanner scanner = new Scanner(System.in);
+	static Scanner scanner = new Scanner(System.in);
 
 	private UserInterface() {
 
@@ -19,21 +19,14 @@ public class UserInterface {
 	}
 
 	int showMainMenu() {
-		System.out.println("Select any one from below options \n\n1. Add the birds\n2. Remove the birds\n"
+		System.out.println("\nSelect any one from below options \n\n1. Add the birds\n2. Remove the birds\n"
 				+ "3. Edit the bird list\n4. Printing the birds\n" +Main.MAIN_EXIT+". Exit");
 		Scanner scanner = new Scanner(System.in);
 		int option = scanner.nextInt();
 		return option;
 	}
-	
-	int showUpdateMenu(){
-		System.out.println("Enter which field you would like to update .."
-				+ "1. id"
-				+ "2. name"
-				+ "3. coulor");
-		 int option =  scanner.nextInt();
-		 return option;
-	}
+
+
 
 	void print(Set<Bird> birdList) {
 		for (Bird bird : birdList) {
@@ -59,6 +52,13 @@ public class UserInterface {
 
 			}
 		}
+	}
+	public static int showUpdateMenu(){
+		System.out.println("\nEnter which field you would like to update/Edit ?\n"
+				+ "1. id\n"
+				+ "2. name\n"
+				+ "3. coulor\n");
+		return(scanner.nextInt());		
 	}
 }
 
