@@ -8,9 +8,10 @@ public class Ostrich extends Bird {
 		color = Color.GREEN;	
 	}
 
-//	@Override
-//	void fly() {
-//		System.out.println(getClass().getSimpleName() + " Cannot fly");
-//	}
+	//	@Override
+	//	void fly() {
+	//		System.out.println(getClass().getSimpleName() + " Cannot fly");
+	//	}
 }
+
 

@@ -5,6 +5,18 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class UserInterface {
+	private static UserInterface instance;
+	Scanner scanner = new Scanner(System.in);
+
+	private UserInterface() {
+
+	}
+	static synchronized UserInterface getInstance() {
+		if(instance == null) {
+			instance = new UserInterface();
+		}
+		return instance;
+	}
 
 	int showMainMenu() {
 		System.out.println("Select any one from below options \n\n1. Add the birds\n2. Remove the birds\n"
@@ -14,10 +26,17 @@ public class UserInterface {
 		return option;
 	}
 	
-	
+	int showUpdateMenu(){
+		System.out.println("Enter which field you would like to update .."
+				+ "1. id"
+				+ "2. name"
+				+ "3. coulor");
+		 int option =  scanner.nextInt();
+		 return option;
+	}
 
-	void print(Set birdList) {
-		for (Object bird : birdList) {
+	void print(Set<Bird> birdList) {
+		for (Bird bird : birdList) {
 			System.out.println(bird);
 		}
 	}
@@ -41,14 +60,6 @@ public class UserInterface {
 			}
 		}
 	}
-
-	//	void printEatable() {
-	//		
-	//	}
-	//	
-	//	void printSwimmable() {
-	//		
-	//	}
 }
 
 

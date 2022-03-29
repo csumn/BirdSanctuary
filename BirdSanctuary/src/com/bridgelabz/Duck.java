@@ -19,4 +19,3 @@ public class Duck extends Bird implements Flyable, Swimmable {
 	}
 
 }
-

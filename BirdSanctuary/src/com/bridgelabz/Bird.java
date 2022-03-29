@@ -14,13 +14,13 @@ public abstract class Bird {
 		System.out.println(getClass().getSimpleName() + "eats");
 	}
 
-//	void fly() {
-//		System.out.println(getClass().getSimpleName() + "fly");
-//	}
-//
-//	void swim() {
-//		System.out.println(getClass().getSimpleName() + "swim");
-//	}
+	void fly() {
+		System.out.println(getClass().getSimpleName() + "fly");
+	}
+
+	void swim() {
+		System.out.println(getClass().getSimpleName() + "swim");
+	}
 
 	@Override
 	public String toString() {
