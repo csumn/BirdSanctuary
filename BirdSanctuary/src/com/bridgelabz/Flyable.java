@@ -1,7 +1,7 @@
-package com.bridgelabz;
-
-public interface Flyable {
-
-	void flyable();
-
-}
+//package com.bridgelabz;
+//
+//public interface Flyable {
+//
+//	void flyable();
+//
+//}
