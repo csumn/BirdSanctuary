@@ -2,14 +2,15 @@ package com.bridgelabz;
 
 import java.util.Objects;
 
-public abstract class Bird {
+public class Bird {
 
 	enum Color { RED, GREEN, WHITE, BLACK_WHITE, BLACK }
-
+	
 	String id;
 	String name;
 	Color color;
-
+	boolean isSwimmable;
+	boolean isFlyable;
 	void eats(){
 		System.out.println(getClass().getSimpleName() + "eats");
 	}

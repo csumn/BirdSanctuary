@@ -36,19 +36,23 @@ public class UserInterface {
 
 	void printFlyable(Set<Bird> birdList) {
 		for (Bird bird : birdList) {
-			if (bird instanceof Flyable) {
-				//		    	((Flyable) bird).flyable();
-				Flyable flyable = (Flyable)bird;
-				flyable.flyable();
+			if (bird.isFlyable) {
+				
+				System.out.println(bird.name+" can Fly ");
 			}
+//				//		    	((Flyable) bird).flyable();
+//				Flyable flyable = (Flyable)bird;
+//				flyable.flyable();
+//			}
 		}
 	}
 
 	void printSwmmable(Set<Bird> birdList) {
 		for (Bird bird : birdList) {
-			if (birdList instanceof Swimmable) {
-				Swimmable swimmableBird = (Swimmable)bird;
-				swimmableBird.swimmable();
+			if (bird.isSwimmable) {
+				System.out.println(bird.name+" can swim ");
+//				Swimmable swimmableBird = (Swimmable)bird;
+//				swimmableBird.swimmable();
 
 			}
 		}

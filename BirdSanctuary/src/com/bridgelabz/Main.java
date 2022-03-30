@@ -5,14 +5,16 @@ import java.util.Scanner;
 import com.bridgelabz.Bird.Color;
 
 public class Main {
-	Bird editedBird;
+	//	;
 	static String idOfBirdWhichNeedToBeEdited;
 	//		BirdRepository birdRepository = BirdRepository.getInstance();
 	//		UserInterface userInterface = UserInterface.getInstance();
 	//	UserInterface userInterface = new UserInterface();
-	Scanner scanner = new Scanner(System.in);
 	final static int MAIN_EXIT = 8;
 	void handleUserOption(int selectedOptionIs) {
+		Scanner scanner = new Scanner(System.in);
+
+		Bird editedBird;
 		BirdRepository birdRepository = BirdRepository.getInstance();
 		UserInterface userInterface = UserInterface.getInstance();
 
@@ -23,9 +25,8 @@ public class Main {
 		case 2: //remove
 			if (birdRepository.birdList.size()!=0) {
 				System.out.println("Enter the id of the bird which you would like to remove ?");
-				String id = scanner.nextLine();
-				
-				Bird removingBird = birdRepository.getBird(id);
+				String idOfRemovingBird = scanner.nextLine();
+				Bird removingBird = birdRepository.getBird(idOfRemovingBird);
 				birdRepository.remove(removingBird);
 				if(removingBird != null) {
 					System.out.println(removingBird+ " removed sucessfully ..");
@@ -42,7 +43,7 @@ public class Main {
 				if (editedBird != null) {
 					System.out.println(editedBird);
 					int outputFromUserForUpdateMenu  = UserInterface.showUpdateMenu();
-					handleUpdateUserSelection(outputFromUserForUpdateMenu);
+					handleUpdateUserSelection(outputFromUserForUpdateMenu,editedBird);
 				}
 			}else {
 				System.out.println("Oops...As of now, Bird set is empty....");
@@ -70,8 +71,9 @@ public class Main {
 
 
 
-	private void handleUpdateUserSelection(int outputFromUserForUpdateMenu) {
+	private void handleUpdateUserSelection(int outputFromUserForUpdateMenu,Bird editedBird) {
 		BirdRepository birdRepository = BirdRepository.getInstance();
+		Scanner scanner = new Scanner(System.in);
 
 
 
@@ -90,9 +92,9 @@ public class Main {
 			break;
 		case 3:
 			System.out.println("Select any number for selecting color from below");
-			setColor();
+			setColor(editedBird);
 
-			
+
 			//			System.out.println("Enter new color : ");
 			//			String newColor = scanner.nextLine();
 			//			editedBird.color = newColor;
@@ -105,15 +107,16 @@ public class Main {
 	}
 
 
-	private void setColor() {
-//		enum Color{Color1,Color2,Color3}
-		
+	private void setColor(Bird editedBird) {
+		//		enum Color{Color1,Color2,Color3}
+		Scanner scanner = new Scanner(System.in);
+
 		System.out.println("1. RED\n"
 				+ "2. GREEN\n"
 				+ "3. WHITE\n"
 				+ "4. BLACK_WHITE\n"
 				+ "5. BLACK");
-		
+
 		int selectedOptionForColor = scanner.nextInt();
 		switch (selectedOptionForColor) {
 		case 1:
@@ -152,28 +155,39 @@ public class Main {
 		}
 	}
 	private void addBird() {
+		BirdRepository birdRepository = BirdRepository.getInstance();
+		Bird bird = new Bird();
+		System.out.println("Enter name of the bird : ");
+		Scanner scanner = new Scanner(System.in);
+		bird.name = scanner.nextLine();
+
+		System.out.println("Enter id of the bird : ");
+		bird.id = scanner.nextLine();
+		setColor(bird);
+		birdRepository.add(bird);
+		
 		//TODO Bird creation via USERINPUT
 
-		Bird penguin = new Penguin("Penguin001");
-		Bird penguin2 = new Penguin("penguin002");
-		Bird duck = new Duck("duck001");
-		Bird ostrich = new Ostrich("ostrich001");
-		Bird parrot = new Parrot("parrot001");
-		Bird pigeon = new Pigeon("pigeon001");
-
-		Bird b = (Bird) pigeon;
-
-		//	creating Database
-		BirdRepository birdRepository = BirdRepository.getInstance();
-
-		birdRepository.add(duck);
-		birdRepository.add(ostrich);
-		birdRepository.add(parrot);
-		birdRepository.add(penguin);
-		birdRepository.add(penguin2);
-		birdRepository.add(pigeon);
-
-		System.out.println("Birds added Successfully ...! ");
+		//		Bird penguin = new Penguin("Penguin001");
+		//		Bird penguin2 = new Penguin("penguin002");
+		//		Bird duck = new Duck("duck001");
+		//		Bird ostrich = new Ostrich("ostrich001");
+		//		Bird parrot = new Parrot("parrot001");
+		//		Bird pigeon = new Pigeon("pigeon001");
+		//
+		//		Bird b = (Bird) pigeon;
+		//
+		//		//	creating Database
+		//		BirdRepository birdRepository = BirdRepository.getInstance();
+		//
+		//		birdRepository.add(duck);
+		//		birdRepository.add(ostrich);
+		//		birdRepository.add(parrot);
+		//		birdRepository.add(penguin);
+		//		birdRepository.add(penguin2);
+		//		birdRepository.add(pigeon);
+		//
+		//		System.out.println("Birds added Successfully ...! ");
 	}
 
 	public static void main(String[] args) {
