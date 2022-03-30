@@ -12,8 +12,6 @@ public class Main {
 	//	UserInterface userInterface = new UserInterface();
 	Scanner scanner = new Scanner(System.in);
 	final static int MAIN_EXIT = 8;
-
-
 	void handleUserOption(int selectedOptionIs) {
 		BirdRepository birdRepository = BirdRepository.getInstance();
 		UserInterface userInterface = UserInterface.getInstance();
@@ -26,6 +24,7 @@ public class Main {
 			if (birdRepository.birdList.size()!=0) {
 				System.out.println("Enter the id of the bird which you would like to remove ?");
 				String id = scanner.nextLine();
+				
 				Bird removingBird = birdRepository.getBird(id);
 				birdRepository.remove(removingBird);
 				if(removingBird != null) {
@@ -37,7 +36,6 @@ public class Main {
 			break;
 		case 3: //edit
 			if (birdRepository.birdList.size()!=0) {
-
 				System.out.println("Enter the Bird id which you would like to edit from the birds");
 				idOfBirdWhichNeedToBeEdited = scanner.nextLine();
 				editedBird = birdRepository.getBird(idOfBirdWhichNeedToBeEdited);
@@ -91,7 +89,10 @@ public class Main {
 			System.out.println("Name was edited Sucessfully:)");
 			break;
 		case 3:
-			System.out.println("Not Yet started ....");
+			System.out.println("Select any number for selecting color from below");
+			setColor();
+
+			
 			//			System.out.println("Enter new color : ");
 			//			String newColor = scanner.nextLine();
 			//			editedBird.color = newColor;
@@ -104,6 +105,52 @@ public class Main {
 	}
 
 
+	private void setColor() {
+//		enum Color{Color1,Color2,Color3}
+		
+		System.out.println("1. RED\n"
+				+ "2. GREEN\n"
+				+ "3. WHITE\n"
+				+ "4. BLACK_WHITE\n"
+				+ "5. BLACK");
+		
+		int selectedOptionForColor = scanner.nextInt();
+		switch (selectedOptionForColor) {
+		case 1:
+			System.out.println("You have selected Red");
+			editedBird.color = Color.RED;
+			System.out.println("Color was edited Sucessfully:)");
+			System.out.println(editedBird);
+			break;
+		case 2:
+			System.out.println("You have selected Green");
+			editedBird.color = Color.GREEN;
+			System.out.println("Color was edited Sucessfully:)");
+			System.out.println(editedBird);
+			break;
+		case 3:
+			System.out.println("You have selected WHITE");
+			editedBird.color = Color.WHITE;
+			System.out.println("Color was edited Sucessfully:)");
+			System.out.println(editedBird);
+			break;
+		case 4:
+			System.out.println("You have selected BLACK_WHITE");
+			editedBird.color = Color.BLACK_WHITE;
+			System.out.println("Color was edited Sucessfully:)");
+			System.out.println(editedBird);
+			break;
+		case 5:
+			System.out.println("You have selected BLACK");
+			editedBird.color = Color.BLACK;
+			System.out.println("Color was edited Sucessfully:)");
+			System.out.println(editedBird);
+			break;
+		default:
+			System.out.println("Kindly Select valid color...");
+			break;
+		}
+	}
 	private void addBird() {
 		//TODO Bird creation via USERINPUT
 
