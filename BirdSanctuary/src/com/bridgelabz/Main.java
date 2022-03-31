@@ -6,12 +6,13 @@ import com.bridgelabz.Bird.Color;
 
 public class Main {
 	//	;
-	static String idOfBirdWhichNeedToBeEdited;
 	//		BirdRepository birdRepository = BirdRepository.getInstance();
 	//		UserInterface userInterface = UserInterface.getInstance();
 	//	UserInterface userInterface = new UserInterface();
-	final static int MAIN_EXIT = 8;
+	final static int MAIN_EXIT = 7;
+	final static int UPDATE_EXIT = 4;
 	void handleUserOption(int selectedOptionIs) {
+		String idOfBirdWhichNeedToBeEdited;
 		Scanner scanner = new Scanner(System.in);
 
 		Bird editedBird;
@@ -36,14 +37,18 @@ public class Main {
 			}
 			break;
 		case 3: //edit
+			int outputFromUserForUpdateMenu;
 			if (birdRepository.birdList.size()!=0) {
 				System.out.println("Enter the Bird id which you would like to edit from the birds");
 				idOfBirdWhichNeedToBeEdited = scanner.nextLine();
 				editedBird = birdRepository.getBird(idOfBirdWhichNeedToBeEdited);
 				if (editedBird != null) {
 					System.out.println(editedBird);
-					int outputFromUserForUpdateMenu  = UserInterface.showUpdateMenu();
-					handleUpdateUserSelection(outputFromUserForUpdateMenu,editedBird);
+					do {
+						outputFromUserForUpdateMenu  = UserInterface.showUpdateMenu();
+						handleUpdateUserSelection(outputFromUserForUpdateMenu,editedBird);
+					}while(outputFromUserForUpdateMenu != UPDATE_EXIT);
+
 				}
 			}else {
 				System.out.println("Oops...As of now, Bird set is empty....");
@@ -59,6 +64,12 @@ public class Main {
 				System.out.println("Oops...As of now, Bird set is empty....");
 			}
 			break;
+		case 5:
+			userInterface.printFlyable(birdRepository.birdList);
+			break;
+		case 6:
+			userInterface.printSwmmable(birdRepository.birdList);
+			break;
 		case MAIN_EXIT:
 			System.out.println("Good Bye!");
 			break;
@@ -69,13 +80,9 @@ public class Main {
 		}
 	}
 
-
-
 	private void handleUpdateUserSelection(int outputFromUserForUpdateMenu,Bird editedBird) {
 		BirdRepository birdRepository = BirdRepository.getInstance();
 		Scanner scanner = new Scanner(System.in);
-
-
 
 		switch (outputFromUserForUpdateMenu) {
 		case 1:
@@ -98,6 +105,9 @@ public class Main {
 			//			System.out.println("Enter new color : ");
 			//			String newColor = scanner.nextLine();
 			//			editedBird.color = newColor;
+			break;
+		case 4:
+			System.out.println("Edit option got terminated and redirected to main menu.... ");
 			break;
 
 		default:
@@ -157,15 +167,23 @@ public class Main {
 	private void addBird() {
 		BirdRepository birdRepository = BirdRepository.getInstance();
 		Bird bird = new Bird();
-		System.out.println("Enter name of the bird : ");
 		Scanner scanner = new Scanner(System.in);
+
+		System.out.println("Enter name of the bird : ");
 		bird.name = scanner.nextLine();
 
 		System.out.println("Enter id of the bird : ");
 		bird.id = scanner.nextLine();
+		
+		System.out.println("Is it flyable ? enter true or false ");
+		bird.isFlyable = scanner.nextBoolean();
+		
+		System.out.println("is it Swimmable ? ? enter true or false ");
+		bird.isSwimmable = scanner.nextBoolean();
+		
 		setColor(bird);
 		birdRepository.add(bird);
-		
+
 		//TODO Bird creation via USERINPUT
 
 		//		Bird penguin = new Penguin("Penguin001");
