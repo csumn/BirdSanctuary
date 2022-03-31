@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Bird {
 
 	enum Color { RED, GREEN, WHITE, BLACK_WHITE, BLACK }
-	
+
 	String id;
 	String name;
 	Color color;
@@ -25,7 +25,8 @@ public class Bird {
 
 	@Override
 	public String toString() {
-		return "Bird [id = " + id + ", name = " + name + ", color = " + color + "]";
+		return "Bird [id = " + id + ", name = " + name + ", color = " + color + ", isSwimmable = " + isSwimmable
+				+ ", isFlyable = " + isFlyable + "]";
 	}
 
 	@Override
