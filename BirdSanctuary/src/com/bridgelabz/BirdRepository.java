@@ -6,7 +6,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class BirdRepository {
-	//	private List birdList = new ArrayList<>();
 	private static BirdRepository instance;
 	static String idOfBirdWhichNeedToBeEdited;
 
@@ -33,10 +32,6 @@ public class BirdRepository {
 		birdList.remove(bird);
 	}
 
-	//	public void remove(Duck duck) {
-	//		birdList.remove(duck);
-	//	}
-
 	Bird getBird(String id) {
 		for (Bird bird : birdList){
 			if(bird.id.equals(id)) {
@@ -51,33 +46,3 @@ public class BirdRepository {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//public void setBirdList(Set<Bird> birdList) {
-//this.birdList = birdList;
-//}
-
-//public void setBirdList(Set birdList) {
-//this.birdList = birdList;
-//}
-
-//public Set getBirdList() {
-//return birdList;
-//}

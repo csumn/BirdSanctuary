@@ -26,8 +26,6 @@ public class UserInterface {
 		return option;
 	}
 
-
-
 	void print(Set<Bird> birdList) {
 		for (Bird bird : birdList) {
 			System.out.println(bird);
@@ -39,10 +37,6 @@ public class UserInterface {
 			if (bird.isFlyable) {
 				System.out.println(bird.name+" can Fly ");
 			}
-			//				//		    	((Flyable) bird).flyable();
-			//				Flyable flyable = (Flyable)bird;
-			//				flyable.flyable();
-			//			}
 		}
 		System.out.println("End of flyable bird list... ");
 	}
@@ -51,13 +45,11 @@ public class UserInterface {
 		for (Bird bird : birdList) {
 			if (bird.isSwimmable) {
 				System.out.println(bird.name+" can swim ");
-				//				Swimmable swimmableBird = (Swimmable)bird;
-				//				swimmableBird.swimmable();
-
 			}
 		}
 		System.out.println("End of swimmable bird list... ");
 	}
+	
 	public static int showUpdateMenu(){
 		System.out.println("\nEnter which field you would like to update/Edit ?\n"
 				+ "1. id\n"

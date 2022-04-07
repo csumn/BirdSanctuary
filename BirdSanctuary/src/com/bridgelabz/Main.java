@@ -5,17 +5,12 @@ import java.util.Scanner;
 import com.bridgelabz.Bird.Color;
 
 public class Main {
-	//	;
-	//		BirdRepository birdRepository = BirdRepository.getInstance();
-	//		UserInterface userInterface = UserInterface.getInstance();
-	//	UserInterface userInterface = new UserInterface();
+
 	final static int MAIN_EXIT = 7;
 	final static int UPDATE_EXIT = 4;
-	void handleUserOption(int selectedOptionIs) {
-		String idOfBirdWhichNeedToBeEdited;
-		Scanner scanner = new Scanner(System.in);
 
-		Bird editedBird;
+	void handleUserOption(int selectedOptionIs) {
+		Scanner scanner = new Scanner(System.in);
 		BirdRepository birdRepository = BirdRepository.getInstance();
 		UserInterface userInterface = UserInterface.getInstance();
 
@@ -37,22 +32,7 @@ public class Main {
 			}
 			break;
 		case 3: //edit
-			int outputFromUserForUpdateMenu;
-			if (birdRepository.birdList.size()!=0) {
-				System.out.println("Enter the Bird id which you would like to edit from the birds");
-				idOfBirdWhichNeedToBeEdited = scanner.nextLine();
-				editedBird = birdRepository.getBird(idOfBirdWhichNeedToBeEdited);
-				if (editedBird != null) {
-					System.out.println(editedBird);
-					do {
-						outputFromUserForUpdateMenu  = UserInterface.showUpdateMenu();
-						handleUpdateUserSelection(outputFromUserForUpdateMenu,editedBird);
-					}while(outputFromUserForUpdateMenu != UPDATE_EXIT);
-
-				}
-			}else {
-				System.out.println("Oops...As of now, Bird set is empty....");
-			}
+			editBird();
 			break;
 		case 4: //Print
 			if (birdRepository.birdList.size()!=0) {
@@ -100,11 +80,6 @@ public class Main {
 		case 3:
 			System.out.println("Select any number for selecting color from below");
 			setColor(editedBird);
-
-
-			//			System.out.println("Enter new color : ");
-			//			String newColor = scanner.nextLine();
-			//			editedBird.color = newColor;
 			break;
 		case 4:
 			System.out.println("Edit option got terminated and redirected to main menu.... ");
@@ -116,9 +91,7 @@ public class Main {
 		}
 	}
 
-
 	private void setColor(Bird editedBird) {
-		//		enum Color{Color1,Color2,Color3}
 		Scanner scanner = new Scanner(System.in);
 
 		System.out.println("1. RED\n"
@@ -174,38 +147,38 @@ public class Main {
 
 		System.out.println("Enter id of the bird : ");
 		bird.id = scanner.nextLine();
-		
+
 		System.out.println("Is it flyable ? enter true or false ");
 		bird.isFlyable = scanner.nextBoolean();
-		
+
 		System.out.println("is it Swimmable ? ? enter true or false ");
 		bird.isSwimmable = scanner.nextBoolean();
-		
+
 		setColor(bird);
 		birdRepository.add(bird);
+	}
 
-		//TODO Bird creation via USERINPUT
+	private void editBird() {
+		BirdRepository birdRepository = BirdRepository.getInstance();
+		String idOfBirdWhichNeedToBeEdited;
+		Bird editedBird;
+		Scanner scanner = new Scanner(System.in);
+		int outputFromUserForUpdateMenu;
+		if (birdRepository.birdList.size()!=0) {
+			System.out.println("Enter the Bird id which you would like to edit from the birds");
+			idOfBirdWhichNeedToBeEdited = scanner.nextLine();
+			editedBird = birdRepository.getBird(idOfBirdWhichNeedToBeEdited);
+			if (editedBird != null) {
+				System.out.println(editedBird);
+				do {
+					outputFromUserForUpdateMenu  = UserInterface.showUpdateMenu();
+					handleUpdateUserSelection(outputFromUserForUpdateMenu,editedBird);
+				}while(outputFromUserForUpdateMenu != UPDATE_EXIT);
 
-		//		Bird penguin = new Penguin("Penguin001");
-		//		Bird penguin2 = new Penguin("penguin002");
-		//		Bird duck = new Duck("duck001");
-		//		Bird ostrich = new Ostrich("ostrich001");
-		//		Bird parrot = new Parrot("parrot001");
-		//		Bird pigeon = new Pigeon("pigeon001");
-		//
-		//		Bird b = (Bird) pigeon;
-		//
-		//		//	creating Database
-		//		BirdRepository birdRepository = BirdRepository.getInstance();
-		//
-		//		birdRepository.add(duck);
-		//		birdRepository.add(ostrich);
-		//		birdRepository.add(parrot);
-		//		birdRepository.add(penguin);
-		//		birdRepository.add(penguin2);
-		//		birdRepository.add(pigeon);
-		//
-		//		System.out.println("Birds added Successfully ...! ");
+			}
+		}else {
+			System.out.println("Oops...As of now, Bird set is empty....");
+		}		
 	}
 
 	public static void main(String[] args) {
@@ -219,16 +192,5 @@ public class Main {
 			selectedOptionIs = userInterface.showMainMenu();
 			main.handleUserOption(selectedOptionIs);
 		}while(selectedOptionIs != MAIN_EXIT);
-
-
-		//		
-		//
-		//		//	UI
-		//						UserInterface userInterface = new UserInterface();
-		//						userInterface.print(birdRepository.getBirdList());
-		//						birdRepository.remove(parrot);
-		//						birdRepository.remove(duck);
-		//						System.out.println("  \n After removing two birds \n" );
-		//						userInterface.print(birdRepository.getBirdList());
 	}
 }
