@@ -45,11 +45,4 @@ public class Bird {
 		Bird other = (Bird) obj;
 		return Objects.equals(id, other.id);
 	}
-
-
-
-	//	@Override
-	//	public String toString() {
-	//		return "Bird [id=" + id + ", name=" + name + ", color=" + color + "]";
-	//	}
 }
